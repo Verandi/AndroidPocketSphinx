@@ -1,4 +1,22 @@
-Once you have checked out the code, do the following steps to setup your environment in eclipse.
+About
+
+This currently a demo of the Sphinx (specifically PocketSphinx) Automatic Speech Recognition system which runs on any Android Device 2.2 or higher. The Sphinx service is actually running on the Android, so internet connection or server connnection is needed.
+
+
+History
+
+This is a fork of aasish, who added quite a bit of work to a fork of either
+* zachrattner pre Oct 27 2010, which was a fork of cmusphinx pre Oct 27 2010 
+ http://www.zachrattner.com/PocketSphinxDemo.tar.gz
+* or the original project on sourceforge 
+ http://cmusphinx.svn.sourceforge.net/viewvc/cmusphinx/trunk/PocketSphinxAndroidDemo/ 
+
+The original source of the Android PocketSphinx Demo was started by the folks at cmusphinx updates and improvements of the Demo should ultimately appear there. 
+
+
+How to use this project
+
+Do the following steps to setup your environment in Eclipse, to run the Demo.
 
 1. Install latest Android SDK.
 http://developer.android.com/sdk/installing.html
@@ -13,3 +31,22 @@ http://developer.android.com/sdk/installing.html
 
 6. Then install necessary drivers for the target device on your PC / Mac  with the help of instructions in the following link.
 http://developer.android.com/sdk/win-usb.html
+
+7. Clone the project from GitHub 
+ $cd Downloads
+ $git clone git@github.com:cesine/AndroidPocketSphinx.git
+
+8. Import the project into Eclipse
+ 	 File > Import > Existing Projects into Workspace
+
+9. Build the project
+	 Project > Build Project
+
+10. Run on the Android
+	 Run > Run
+
+The app will prompt you to download some things.
+
+If you need help you can click on your device's Menu button, there is a Help menu with some instructions on how to test the Speech Recognition.
+
+Currently it works great, not always accurate but at least fully functional. 
