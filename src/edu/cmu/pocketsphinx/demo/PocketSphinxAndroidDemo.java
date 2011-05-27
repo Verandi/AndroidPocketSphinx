@@ -29,6 +29,24 @@ import android.widget.Toast;
 import android.content.*;
 import android.graphics.Color;
 
+/**
+ * This activity presents the user with an activity that has three sections, 
+ * Words
+ * Numbers
+ * Digits
+ * 
+ * The RecognizerTask will choose which sort of Language Model to use based on which area
+ * has focus. (Additional language models can be downloaded from a remote url which is provided in the DownloadData.java activity)
+ * 
+ * The activity saved the audio which is recorded into the app's external directory
+ * 
+ * The activity is also able to display text that it "recognizes" as teh user is speaking,
+ * this is called the First Pass. Then after the users releases the Hold and Speak button the app
+ * goes through and tries to improve the quality of the recognized text now that it has all the context. 
+ * 
+ * @author aasish
+ *
+ */
 public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener, RecognitionListener {
 	static {
 		System.loadLibrary("pocketsphinx_jni");
@@ -106,6 +124,10 @@ public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener
 			this.which_pass.setText("First Pass");
 			start_date = new Date();
 			this.listening = true;
+			/*
+			 * Starts the RecognizerTask's thread, which will start listening and analyzing the 
+			 * audio
+			 */
 			this.rec.start();
 			break;
 		case MotionEvent.ACTION_UP:
@@ -118,6 +140,11 @@ public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener
 				this.rec_dialog.setCancelable(false);
 				this.listening = false;
 			}
+			/*
+			 * Tell the RecognizerTask's thread to stop. 
+			 * It will finish analyzing the audio TODO what else does it do?
+			 * 
+			 */
 			this.rec.stop();
 			break;
 		default:
@@ -141,6 +168,12 @@ public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
+		/*
+		 * The current configuration of the app is saved in a text file called currentconf in the 
+		 * apps external storage. 
+		 * TODO perhaps put the configuration information into a preferences activity to be more
+		 * android like in the goal of data persistance
+		 */
 		if(!Utility.pathExists(PS_DATA_PATH+"currentconf")){
 			downloadData();
 		}
@@ -152,11 +185,26 @@ public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener
 //		  		this.rec.setRecognitionListener(this);
 //		  		this.rec_thread.start();
 //		}
-		
+		/*
+		 * The User interface is controlled basically by the Button01, the Hold and Speak button.
+		 * once the user touches the button the onTouch listener is triggered see the function onTouch above
+		 */
 		Button b = (Button) findViewById(R.id.Button01);
 		b.setOnTouchListener(this);
+		/*
+		 * performance text is a line of text which says how long the recording was among other things
+		 * 
+		 */
 		this.performance_text = (TextView) findViewById(R.id.PerformanceText);
+		/*
+		 * which pass is a line of red text which says if its the first pass or final pass
+		 * 
+		 */
 		this.which_pass = (TextView)findViewById(R.id.WhichPass);
+
+		/*
+		 * TODO Words is for free form sentences, or for individual words?
+		 */
 		this.words = (EditText) findViewById(R.id.EditText01);
 		//words.setInputType(0);
 		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -174,10 +222,14 @@ public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener
 		        }
 		    }
 		});
+
+		/*
+		 * TODO number seems to crash
+		 * number is for "one hundred and two"
+		 */
 		this.number = (EditText) findViewById(R.id.EditText02);
 		number.setInputType(0);
 		imm.hideSoftInputFromWindow(number.getWindowToken(), 0);
-
 		number.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 		    @Override
 		    public void onFocusChange(View v, boolean hasFocus) {
@@ -191,10 +243,13 @@ public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener
 		        }
 		    }
 		});
+		
+		/*
+		 * digit is for just a string of digits
+		 */
 		this.digit = (EditText) findViewById(R.id.EditText03);
 		digit.setInputType(0);
 		imm.hideSoftInputFromWindow(digit.getWindowToken(), 0);
-
 		digit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 		    @Override
 		    public void onFocusChange(View v, boolean hasFocus) {
@@ -323,6 +378,16 @@ public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener
 	       this.finish();
 	}
 	
+	/**
+	 * Takes in a type of recognition (words, number, digits) and uses this to create a new
+	 * RecognizerTask
+	 * 
+	 * This prepares the Hold and Speak button, says that its not currently listening,
+	 * sets the RecognizerTask's recognitionlistener to this activity's context and starts the
+	 * recognizertasks thread
+	 * 
+	 * @param type
+	 */
 	public void setConfiguration(int type){
 		//hardcoded
 		//may be open a new activity
@@ -336,13 +401,13 @@ public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener
 				defaultConfig[1] = "hub4.5000.DMP";
 				defaultConfig[2] = "hub4.5000.dic";
 				break;
-			//numbers	
+			//numbers, TODO seems to crash	
 			case 2:
 				defaultConfig[0] = "hub4wsj_sc_8k";
 				defaultConfig[1] = "number.DMP";
 				defaultConfig[2] = "number.dic";
 				break;
-			//digits	
+			//digits, seems to work well	
 			case 3:
 				defaultConfig[0] = "tidigits";
 				defaultConfig[1] = "tidigits.DMP";

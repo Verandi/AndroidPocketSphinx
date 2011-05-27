@@ -27,6 +27,20 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+
+/**
+ * This activity presents an activity to the user to download and select language models and acoustic models 
+ * that can be used by PocketSphinx
+ * 
+ * The models are hosted on Aasish's website
+ * http://tts.speech.cs.cmu.edu/apappu/
+ * 
+ * If the developer wants to change the availible models they can folow a similar pattern and host 
+ * the models and a list of models at another URL
+ * 
+ * @author aasish
+ *
+ */
 public class DownloadData extends Activity {
 
 	public int totalFileLength = 0;
@@ -41,6 +55,10 @@ public class DownloadData extends Activity {
 	private Handler mHandler;
 	private ProgressDialog pd;
 
+	/*
+	 * LM means Language Model
+	 * AM means Acoustic Model
+	 */
 	private ArrayAdapter<CharSequence> mLMList;
 	private ArrayAdapter<CharSequence> mAMList;
 
@@ -78,7 +96,9 @@ public class DownloadData extends Activity {
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		Button bDownloadLM = (Button) findViewById(R.id.bDownloadLM);
+		bDownloadLM.setText("Download Language Model");
 		Button bDownloadAM = (Button) findViewById(R.id.bDownloadAM);
+		bDownloadAM.setText("Download Acoustic Model");
 
 		bDownloadLM.setOnClickListener(new View.OnClickListener() {
 
@@ -229,6 +249,17 @@ public class DownloadData extends Activity {
 	private void populateModels() {
 		// show models through the spinners, ArrayList of data
 
+		/*
+		 * Sample lm-list from http://tts.speech.cs.cmu.edu/apappu/android/edu.cmu.pocketsphinx/lm-list
+		 	hub4.5000.DMP	hub4.5000.dic
+			tidigits.DMP	tidigits.dic
+			turtle.DMP	turtle.dic
+			number.DMP	number.dic
+		
+		   Sample am-list from http://tts.speech.cs.cmu.edu/apappu/android/edu.cmu.pocketsphinx/am-list
+			hub4wsj_sc_8k
+			tidigits
+		 */
 		try {
 			availableLM = Utility.readLines(PS_DATA_PATH + "lm-list");
 			availableAM = Utility.readLines(PS_DATA_PATH + "am-list");
@@ -251,7 +282,10 @@ public class DownloadData extends Activity {
 		}
 
 		for (String s : availableAM) {
-
+			/*
+			 * TODO explore the HMM component more
+			 * It probably goes to get an HMM Acoustic Model
+			 */
 			String amFile = PS_DATA_PATH + "hmm/" + s;
 			if (!Utility.pathExists(amFile)) {
 				// We need to install this am.
