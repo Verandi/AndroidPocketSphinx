@@ -1,6 +1,9 @@
-package edu.cmu.pocketsphinx.demo;
+package ca.ilanguage.labs.pocketsphinx.service;
 
 import java.util.concurrent.LinkedBlockingQueue;
+
+import ca.ilanguage.labs.pocketsphinx.preference.PreferenceConstants;
+
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -31,7 +34,7 @@ public class RecognizerTask implements Runnable {
 	 * 
 	 * @author David Huggins-Daines <dhuggins@cs.cmu.edu>
 	 */
-	private static final String PS_DATA_PATH = Environment.getExternalStorageDirectory()+"/Android/data/edu.cmu.pocketsphinx";
+	private static final String PS_DATA_PATH = Environment.getExternalStorageDirectory()+PreferenceConstants.PREFERENCE_BASE_PATH;
 	class AudioTask implements Runnable {
 		/**
 		 * Queue on which audio blocks are placed.
@@ -184,11 +187,11 @@ public class RecognizerTask implements Runnable {
 //				PS_DATA_PATH+"/lm/"+lm);
 		
 		c.setString("-hmm",
-				"/sdcard/Android/data/edu.cmu.pocketsphinx/hmm/"+hmm);
+				"/sdcard"+PreferenceConstants.PREFERENCE_BASE_PATH +"hmm/"+hmm);
 		c.setString("-dict",
-				"/sdcard/Android/data/edu.cmu.pocketsphinx/lm/"+dict);
+				"/sdcard"+PreferenceConstants.PREFERENCE_BASE_PATH +"lm/"+dict);
 		c.setString("-lm",
-				"/sdcard/Android/data/edu.cmu.pocketsphinx/lm/"+lm);
+				"/sdcard"+PreferenceConstants.PREFERENCE_BASE_PATH +"lm/"+lm);
 		/*
 		c.setString("-hmm",
 		"/sdcard/Android/data/edu.cmu.pocketsphinx/hmm/zh/tdt_sc_8k");

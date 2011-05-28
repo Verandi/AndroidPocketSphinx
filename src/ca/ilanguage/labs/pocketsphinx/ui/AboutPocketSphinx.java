@@ -1,5 +1,6 @@
-package edu.cmu.pocketsphinx.demo;
+package ca.ilanguage.labs.pocketsphinx.ui;
 
+import  ca.ilanguage.labs.pocketsphinx.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;

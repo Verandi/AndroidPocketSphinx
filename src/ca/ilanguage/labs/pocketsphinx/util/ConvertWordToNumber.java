@@ -1,6 +1,6 @@
-package edu.cmu.pocketsphinx.demo;
+package ca.ilanguage.labs.pocketsphinx.util;
 import java.util.*;
- class ConvertWordToNumber {
+public class ConvertWordToNumber {
     public static String WithSeparator(long number) {
         if (number < 0) {
             return "-" + WithSeparator(-number);

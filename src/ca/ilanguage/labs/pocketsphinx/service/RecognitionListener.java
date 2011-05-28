@@ -1,4 +1,4 @@
-package edu.cmu.pocketsphinx.demo;
+package ca.ilanguage.labs.pocketsphinx.service;
 
 import android.os.Bundle;
 

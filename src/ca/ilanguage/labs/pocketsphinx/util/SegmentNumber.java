@@ -1,4 +1,4 @@
-package edu.cmu.pocketsphinx.demo;
+package ca.ilanguage.labs.pocketsphinx.util;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;

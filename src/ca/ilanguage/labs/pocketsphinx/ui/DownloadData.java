@@ -1,4 +1,4 @@
-package edu.cmu.pocketsphinx.demo;
+package ca.ilanguage.labs.pocketsphinx.ui;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -13,6 +13,11 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import ca.ilanguage.labs.pocketsphinx.preference.PreferenceConstants;
+import ca.ilanguage.labs.pocketsphinx.util.Utility;
+
+import  ca.ilanguage.labs.pocketsphinx.R;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -47,7 +52,7 @@ public class DownloadData extends Activity {
 	public int finishedFileLength;
 	private final static String PS_DATA_PATH = Environment
 			.getExternalStorageDirectory()
-			+ "/Android/data/edu.cmu.pocketsphinx/";
+			+ PreferenceConstants.PREFERENCE_BASE_PATH;
 	private final static String ROOT_URL = "http://tts.speech.cs.cmu.edu/apappu/android/edu.cmu.pocketsphinx/";
 	public boolean abortDownload;
 	public boolean finished;
@@ -162,7 +167,7 @@ public class DownloadData extends Activity {
 			try {
 				Log.e("PocketSphinx.DownloadData", PS_DATA_PATH);
 				success = new File(Environment.getExternalStorageDirectory()
-						+ "/Android/data/" + "edu.cmu.pocketsphinx/").mkdirs();
+						+ "/Android/data/" + "ca.ilanguage.labs.pocketsphinx/").mkdirs();
 			} catch (Exception e) {
 				Log.e("PocketSphinx.DownloadData",
 						"Could not create directory structure. "

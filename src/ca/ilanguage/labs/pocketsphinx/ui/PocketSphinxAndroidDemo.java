@@ -1,10 +1,22 @@
-package edu.cmu.pocketsphinx.demo;
+package ca.ilanguage.labs.pocketsphinx.ui;
 
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+
+import ca.ilanguage.labs.pocketsphinx.preference.PocketSphinxSettings;
+import ca.ilanguage.labs.pocketsphinx.preference.PreferenceConstants;
+import ca.ilanguage.labs.pocketsphinx.preference.SpeechRecognitionSettings;
+import ca.ilanguage.labs.pocketsphinx.service.RecognitionListener;
+import ca.ilanguage.labs.pocketsphinx.service.RecognizerTask;
+import ca.ilanguage.labs.pocketsphinx.util.ConvertWordToNumber;
+import ca.ilanguage.labs.pocketsphinx.util.SegmentNumber;
+import ca.ilanguage.labs.pocketsphinx.util.Utility;
+
+import  ca.ilanguage.labs.pocketsphinx.R;
+
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -100,7 +112,7 @@ public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener
 	String activeFieldStr = "";
 	
 	private ProgressDialog pd;
-	private final static String PS_DATA_PATH = Environment.getExternalStorageDirectory() + "/Android/data/edu.cmu.pocketsphinx/";
+	private final static String PS_DATA_PATH = Environment.getExternalStorageDirectory() + PreferenceConstants.PREFERENCE_BASE_PATH;
 
 	
 	/**
@@ -346,10 +358,11 @@ public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener
 		
 		return true;
 	
-//		case R.id.configure :
-//			showConfigureActivity();
-//			
-//		return true;
+		case R.id.settings :
+			//showConfigureActivity();
+			Intent i = new Intent(this,SpeechRecognitionSettings.class);
+			startActivity(i);
+		return true;
 		
 		case R.id.exit : 
 			exitApplication();

@@ -1,8 +1,13 @@
-package edu.cmu.pocketsphinx.demo;
+package ca.ilanguage.labs.pocketsphinx.preference;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import ca.ilanguage.labs.pocketsphinx.util.Utility;
+
+
+import  ca.ilanguage.labs.pocketsphinx.R;
 
 import android.app.Activity;
 import android.os.Bundle;

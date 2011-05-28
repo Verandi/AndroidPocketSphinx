@@ -1,35 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="edu.cmu.pocketsphinx.demo"
+      package="ca.ilanguage.labs.pocketsphinx"
       android:versionCode="1"
-      android:versionName="1.0">
+      android:versionName="1.0"
+      android:installLocation="preferExternal">
     <application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="true">
-        <activity android:name=".PocketSphinxAndroidDemo"
+        <activity android:name=".ui.PocketSphinxAndroidDemo"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AboutPocketSphinx"
+        <activity android:name="ca.ilanguage.labs.pocketsphinx.ui.AboutPocketSphinx"
                   android:label="@string/app_name">
             
         </activity>
-	   <activity android:name=".PocketSphinxSettings">
+	   <activity android:name="ca.ilanguage.labs.pocketsphinx.preference.PocketSphinxSettings">
 	   		
        
 	   </activity>	
-	   <activity android:name=".FillerClass">
+	   <activity android:name="ca.ilanguage.labs.pocketsphinx.ui.FillerClass">
        
 	   </activity>
 	   
-	     <activity android:name=".DownloadData">
+	     <activity android:name="ca.ilanguage.labs.pocketsphinx.ui.DownloadData">
 <!--	     <intent-filter>-->
 <!--          <action android:name="android.intent.action.MAIN" />-->
 <!--           <category android:name="android.intent.category.LAUNCHER" />-->
 <!--           </intent-filter>-->
 	   </activity>
 	   
+	   <activity android:name="ca.ilanguage.labs.pocketsphinx.preference.SpeechRecognitionSettings"
+                android:label="@string/settings_name"
+                android:exported="true" />
+                
+	   <!-- The service that implements voice recognition. Note that a label
+             for the service is important to provide, as this is what will show
+             to users if they have to choose between multiple recognizers in
+             system settings. -->
+
+       
     </application>
     <uses-sdk android:minSdkVersion="8"/>
 
