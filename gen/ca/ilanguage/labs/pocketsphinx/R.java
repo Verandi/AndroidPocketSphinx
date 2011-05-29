@@ -27,30 +27,32 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int AboutPS=0x7f090000;
-        public static final int Button01=0x7f09000b;
-        public static final int ComingUP=0x7f090001;
-        public static final int EditText01=0x7f09000f;
-        public static final int EditText02=0x7f090011;
-        public static final int EditText03=0x7f090013;
-        public static final int PerformanceText=0x7f09000c;
-        public static final int SayDigits=0x7f090012;
-        public static final int SayNumbers=0x7f090010;
-        public static final int SayWords=0x7f09000e;
-        public static final int WhichPass=0x7f09000d;
-        public static final int about=0x7f090017;
-        public static final int bDownloadAM=0x7f09000a;
-        public static final int bDownloadLM=0x7f090009;
-        public static final int bsetLMAM=0x7f090007;
-        public static final int download_data=0x7f090014;
-        public static final int exit=0x7f090015;
-        public static final int info=0x7f090008;
-        public static final int settings=0x7f090016;
-        public static final int spnAM=0x7f090005;
-        public static final int spnLM=0x7f090003;
-        public static final int txtInfoAM=0x7f090004;
-        public static final int txtInfoLM=0x7f090002;
-        public static final int txtpad1=0x7f090006;
+        public static final int AboutPS=0x7f0a0000;
+        public static final int Button01=0x7f0a000b;
+        public static final int ComingUP=0x7f0a0001;
+        public static final int EditText01=0x7f0a000f;
+        public static final int EditText02=0x7f0a0011;
+        public static final int EditText03=0x7f0a0013;
+        public static final int MainLayout=0x7f0a0014;
+        public static final int PerformanceText=0x7f0a000c;
+        public static final int SayDigits=0x7f0a0012;
+        public static final int SayNumbers=0x7f0a0010;
+        public static final int SayWords=0x7f0a000e;
+        public static final int WhichPass=0x7f0a000d;
+        public static final int about=0x7f0a0019;
+        public static final int bDownloadAM=0x7f0a000a;
+        public static final int bDownloadLM=0x7f0a0009;
+        public static final int bsetLMAM=0x7f0a0007;
+        public static final int download_data=0x7f0a0015;
+        public static final int exit=0x7f0a0016;
+        public static final int info=0x7f0a0008;
+        public static final int settings=0x7f0a0017;
+        public static final int spnAM=0x7f0a0005;
+        public static final int spnLM=0x7f0a0003;
+        public static final int testBothASR=0x7f0a0018;
+        public static final int txtInfoAM=0x7f0a0004;
+        public static final int txtInfoLM=0x7f0a0002;
+        public static final int txtpad1=0x7f0a0006;
     }
     public static final class layout {
         public static final int about=0x7f030000;
@@ -58,27 +60,33 @@ public final class R {
         public static final int config=0x7f030002;
         public static final int download=0x7f030003;
         public static final int main=0x7f030004;
+        public static final int transparent_activity=0x7f030005;
     }
     public static final class menu {
-        public static final int menu=0x7f080000;
+        public static final int menu=0x7f090000;
     }
     public static final class string {
         public static final int app_name=0x7f050001;
         public static final int hello=0x7f050000;
         public static final int performance_text=0x7f050002;
+        public static final int preference_enable_pocketsphinx=0x7f050005;
+        public static final int preference_enable_pocketsphinx_summary=0x7f050006;
         /**  The default value of the preference for the type of results to return
          (letters or numbers). 
          */
-        public static final int results_type_default_value=0x7f050006;
+        public static final int results_type_default_value=0x7f050008;
         /**  The title of the preference for the type of results to return (letters or numbers). 
          */
-        public static final int results_type_title=0x7f050005;
+        public static final int results_type_title=0x7f050007;
         /**  The name for the recognizer - to be shown in system settings. 
          */
         public static final int service_name=0x7f050003;
         /**  The name of the settings activity. 
          */
         public static final int settings_name=0x7f050004;
+    }
+    public static final class style {
+        public static final int Theme_Transparent=0x7f080000;
     }
     public static final class xml {
         public static final int preferences=0x7f040000;

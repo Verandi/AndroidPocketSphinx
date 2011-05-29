@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.widget.Toast;
 import ca.ilanguage.labs.pocketsphinx.preference.PreferenceConstants;
 import ca.ilanguage.labs.pocketsphinx.R;
@@ -33,12 +34,11 @@ public class TestPocketSphinxAndAndroidASR extends Activity{
 		if (mUsePocektSphinxASR){
 			Toast.makeText(TestPocketSphinxAndAndroidASR.this, "Working offline, using PocketSphinx Speech recognizer. ", Toast.LENGTH_LONG).show();
      	}else{
-     		Toast.makeText(TestPocketSphinxAndAndroidASR.this, "Working online, using system speech recognizer (Google speech recognition server). ", Toast.LENGTH_LONG).show();
+     		Toast.makeText(TestPocketSphinxAndAndroidASR.this, "Working online, uUsing system speech recognizer (Google speech recognition server). ", Toast.LENGTH_LONG).show();
         }
-		
 		PackageManager pm = getPackageManager();
         List<ResolveInfo> activities = pm.queryIntentActivities(
-                new Intent(android.speech.RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0);
+                new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0);
         if (activities.size() != 0) {
         	Toast.makeText(TestPocketSphinxAndAndroidASR.this, "Speech recognizer is present. ", Toast.LENGTH_LONG).show();
         	mSpeechRecognitionOkay = true;
@@ -56,32 +56,14 @@ public class TestPocketSphinxAndAndroidASR extends Activity{
 		startVoiceRecognitionActivity();
 	
 	}
-	/**
-	 * This method calls the RecognizerIntent, it currently has logic to check if 
-	 * PocketSphinx is enabled and call that one. TODO ideally the intent will be the same, just have pocketsphinx register to accept it in the preferences.
-	 * For debugging would rather not register it system wide. On vegan-tab that caused a continual acore process unexpectily exit force closes. 
-	 */
+	
 	private void startVoiceRecognitionActivity() {
 		if (mSpeechRecognitionOkay){
-			if(mUsePocektSphinxASR){
-				/*
-				 * If use PocketSphinx is enabled, call the RecognizerIntent from the ilanguage.labs.pocketsphinx package
-				 */
-				Intent intent = new Intent(ca.ilanguage.labs.pocketsphinx.service.RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-		        intent.putExtra(ca.ilanguage.labs.pocketsphinx.service.RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-		        		ca.ilanguage.labs.pocketsphinx.service.RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-		        //intent.putExtra(ca.ilanguage.labs.pocketsphinx.service.RecognizerIntent.EXTRA_PROMPT, "no prompt");
-		        startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
-			}else{
-				/*
-				 * If PocketSphix is  not enabled, use the built in RecognizerIntent
-				 */
-		        Intent intent = new Intent(android.speech.RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-		        intent.putExtra(android.speech.RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-		                android.speech.RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-		        //intent.putExtra(android.speech.RecognizerIntent.EXTRA_PROMPT, "no prompt");
-		        startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
-			}
+	        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+	        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+	                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+	        //intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "no prompt");
+	        startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
 		}else{
 			finish();
 		}
@@ -93,14 +75,9 @@ public class TestPocketSphinxAndAndroidASR extends Activity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode == RESULT_OK) {
-            
-        	/*
-        	 * No need to switch between the two intents, both provide an array of possible matches (or are supposed to)
-        	 * so the output is treated the same.
-        	 */
-        	// Fill the list view with the strings the recognizer thought it could have heard
+            // Fill the list view with the strings the recognizer thought it could have heard
             ArrayList<String> matches = data.getStringArrayListExtra(
-                    android.speech.RecognizerIntent.EXTRA_RESULTS);
+                    RecognizerIntent.EXTRA_RESULTS);
             Toast.makeText(TestPocketSphinxAndAndroidASR.this, "Possible recognitions: "+matches.toString(), Toast.LENGTH_LONG).show();
 
 //            mList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,

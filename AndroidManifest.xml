@@ -43,7 +43,7 @@
              for the service is important to provide, as this is what will show
              to users if they have to choose between multiple recognizers in
              system settings. -->
-
+	
        
     </application>
     <uses-sdk android:minSdkVersion="8"/>
