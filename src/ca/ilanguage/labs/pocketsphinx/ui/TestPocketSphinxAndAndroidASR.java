@@ -32,9 +32,9 @@ public class TestPocketSphinxAndAndroidASR extends Activity{
 				PreferenceConstants.PREFERENCE_NAME, MODE_PRIVATE);
 		mUsePocektSphinxASR = prefs.getBoolean(PreferenceConstants.PREFERENCE_USE_POCKETSPHINX_ASR, false);
 		if (mUsePocektSphinxASR){
-			Toast.makeText(TestPocketSphinxAndAndroidASR.this, "Working offline, using PocketSphinx Speech recognizer. ", Toast.LENGTH_LONG).show();
+			Toast.makeText(TestPocketSphinxAndAndroidASR.this, "Would be working offline, using PocketSphinx Speech recognizer. However it is not yet tied into the system and implemented and registered as a Speech Recognizer.", Toast.LENGTH_LONG).show();
      	}else{
-     		Toast.makeText(TestPocketSphinxAndAndroidASR.this, "Working online, uUsing system speech recognizer (Google speech recognition server). ", Toast.LENGTH_LONG).show();
+     		Toast.makeText(TestPocketSphinxAndAndroidASR.this, "Working online, Using system speech recognizer (Google speech recognition server). ", Toast.LENGTH_LONG).show();
         }
 		PackageManager pm = getPackageManager();
         List<ResolveInfo> activities = pm.queryIntentActivities(

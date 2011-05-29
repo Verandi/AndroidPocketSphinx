@@ -56,6 +56,27 @@ import android.graphics.Color;
  * this is called the First Pass. Then after the users releases the Hold and Speak button the app
  * goes through and tries to improve the quality of the recognized text now that it has all the context. 
  * 
+ * TODO currently this demo can only demo the PocketSphinx speech recognizer, it doesn't make it available for other
+ * developers to call, or for the user to use generally.
+ * 
+ * TODO implement service.SpeechRecognizerViaFilePocketSphinx so that developers can pass a file to the speech recognizer and get bac
+ * 		an array of array of hypotheses for utterances in the audio
+ * 
+ * TODO implement service.SpeechRecognizerViaRecorderSphinx so that users can do speech recognition offline, without a network connection
+ * 		(the default speech recognizer provided by com.google.android.voicesearch has to be online and only accepts short utterances. it cannot be used eyes-free). 
+ * 
+ * 
+ * TODO once the two speech recognizers are implemented, edit the ui.TestPocketSPhinxAndAndroidASR so that if PocketSphinx is enabled in the settings, 
+ * 		it will run the service.SpeechRecognizerViaRecorderSphinx 
+ * 
+ *  
+ *  
+ *  History of this Demo:
+ *  	Created by David Huggins-Daines <dhuggins@cs.cmu.edu> sourceforge:dhdfu and other contributors at the cmusphinx project
+ *  	Turned into a very user friendly Demo app and apk with very little dependencies by Aasish Pappu sourceforge: aasishp , github aasish
+ * 		Infrastructure laid out for eyes-free offline speech recognition by github: cesine
+ * 		Eyes-free offline speech recognition implemented by: maybe someone who knows pocketsphinx while i learn how to use it.. ;)
+ * 
  * @author aasish
  *
  */
