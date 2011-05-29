@@ -25,7 +25,7 @@ import ca.ilanguage.labs.pocketsphinx.R;
 public class SpeechRecognitionSettings extends PreferenceActivity {
     
     // The name of the SharedPreferences file we'll store preferences in.
-    public static final String SHARED_PREFERENCES_NAME = "VoiceRecognitionService";
+    public static final String SHARED_PREFERENCES_NAME = PreferenceConstants.PREFERENCE_NAME;//"VoiceRecognitionService";
     
     // The key to the preference for the type of results to show (letters or numbers).
     // Identical to the value specified in res/values/strings.xml.
@@ -39,7 +39,8 @@ public class SpeechRecognitionSettings extends PreferenceActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getPreferenceManager().setSharedPreferencesName(SHARED_PREFERENCES_NAME);
+        getPreferenceManager().setSharedPreferencesMode(MODE_PRIVATE);
+        getPreferenceManager().setSharedPreferencesName(PreferenceConstants.PREFERENCE_NAME);
         addPreferencesFromResource(R.xml.preferences);
     }
 }
