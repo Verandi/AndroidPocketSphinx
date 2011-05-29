@@ -9,7 +9,7 @@ import java.util.Date;
 import ca.ilanguage.labs.pocketsphinx.preference.PocketSphinxSettings;
 import ca.ilanguage.labs.pocketsphinx.preference.PreferenceConstants;
 import ca.ilanguage.labs.pocketsphinx.preference.SpeechRecognitionSettings;
-import ca.ilanguage.labs.pocketsphinx.service.RecognitionListener;
+import ca.ilanguage.labs.pocketsphinx.service.RecognitionListenerReduced;
 import ca.ilanguage.labs.pocketsphinx.service.RecognizerTask;
 import ca.ilanguage.labs.pocketsphinx.util.ConvertWordToNumber;
 import ca.ilanguage.labs.pocketsphinx.util.SegmentNumber;
@@ -59,7 +59,7 @@ import android.graphics.Color;
  * @author aasish
  *
  */
-public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener, RecognitionListener {
+public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener, RecognitionListenerReduced {
 	static {
 		System.loadLibrary("pocketsphinx_jni");
 	}

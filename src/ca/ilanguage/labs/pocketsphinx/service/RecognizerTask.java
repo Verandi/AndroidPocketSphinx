@@ -124,7 +124,7 @@ public class RecognizerTask implements Runnable {
 	/**
 	 * Listener for recognition results.
 	 */
-	RecognitionListener rl;
+	RecognitionListenerReduced rl;
 	/**
 	 * Whether to report partial results.
 	 */
@@ -148,11 +148,11 @@ public class RecognizerTask implements Runnable {
 	 */
 	Event mailbox;
 
-	public RecognitionListener getRecognitionListener() {
+	public RecognitionListenerReduced getRecognitionListener() {
 		return rl;
 	}
 
-	public void setRecognitionListener(RecognitionListener rl) {
+	public void setRecognitionListener(RecognitionListenerReduced rl) {
 		this.rl = rl;
 	}
 
