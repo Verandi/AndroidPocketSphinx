@@ -1,10 +1,10 @@
 package ca.ilanguage.labs.pocketsphinx.service;
 
 /*
- * Copyright (C) 2008 The Android Open Source Project
- * 
  * Based on android.speech.RecognizerIntent.java commit 340acd870ad05ec7b18e
  * https://github.com/android/platform_frameworks_base/blob/master/core/java/android/speech/RecognizerIntent.java
+ *
+ * Copyright (C) 2008 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

@@ -359,11 +359,11 @@ public class PocketSphinxAndroidDemo extends Activity implements OnTouchListener
 		return true;
 	
 		case R.id.settings :
-			//showConfigureActivity();
-			Intent i = new Intent(this,SpeechRecognitionSettings.class);
-			startActivity(i);
+			startActivity(new Intent(this,SpeechRecognitionSettings.class));
 		return true;
-		
+		case R.id.testBothASR :
+			startActivity(new Intent(this,TestPocketSphinxAndAndroidASR.class));
+		return true;
 		case R.id.exit : 
 			exitApplication();
 		return true;
