@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="com.android.ide.eclipse.adt.debug.LaunchConfigType">
 <intAttribute key="com.android.ide.eclipse.adt.action" value="1"/>
-<stringAttribute key="com.android.ide.eclipse.adt.activity" value="edu.cmu.pocketsphinx.demo.PocketSphinxAndroidDemo"/>
+<stringAttribute key="com.android.ide.eclipse.adt.activity" value="ca.ilanguage.labs.pocketsphinx.ui.PocketSphinxAndroidDemo"/>
 <stringAttribute key="com.android.ide.eclipse.adt.avd" value="TeamTalk"/>
 <stringAttribute key="com.android.ide.eclipse.adt.commandline" value=""/>
 <intAttribute key="com.android.ide.eclipse.adt.delay" value="0"/>

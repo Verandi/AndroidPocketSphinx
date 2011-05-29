@@ -166,8 +166,7 @@ public class DownloadData extends Activity {
 			boolean success;
 			try {
 				Log.e("PocketSphinx.DownloadData", PS_DATA_PATH);
-				success = new File(Environment.getExternalStorageDirectory()
-						+ "/Android/data/" + "ca.ilanguage.labs.pocketsphinx/").mkdirs();
+				success = new File(PS_DATA_PATH).mkdirs();
 			} catch (Exception e) {
 				Log.e("PocketSphinx.DownloadData",
 						"Could not create directory structure. "
